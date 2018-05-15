@@ -1,0 +1,25 @@
+/* your styles go here */
+.counterim {
+	height: 200px;
+}
+.cities {
+	height:50px;
+}
+.longdrop {
+	max-height:565px;;
+	overflow:scroll;
+}
+.detailed {
+	height:400px;
+}
+
+#flash {
+	background-color: #77dd77;
+	text-align: center;
+	color: white;
+}
+
+#fmsg {
+	margin: 5px;
+	padding: 5px;
+}
