@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'head.html' %} 
+</head>
+
+<body>
+
+    <div id="all">
+{% include 'nav.html' %}
+
+        <div id="heading-breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>{{item.id}}</h1>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb">
+                            <li><a href="{{url_for('index')}}">Home</a>
+                            </li>
+                            <li><a href="{{url_for('allproductcat', productcat=item.catagory)}}">{{typ.name}}</a>
+                            </li>
+                            <li>{{item.id}}</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2>Product Details</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row portfolio-project">
+
+                    <section>
+
+                        <div class="col-sm-8">
+                            <img class="img-responsive detailed" src="/static/{{item.image}}" alt="">
+                            <!-- /.project owl-slider -->
+
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="project-more">
+                            <form action= "{{url_for('productedit', productid = productid)}}" method = 'POST'>
+
+                                <h5>NAME</h5>
+                                <input type = 'text' size='500' name = 'name' placeholder = '{{item.name}}' >
+                                <h5>SIZE</h5>
+                                <input type = 'text' size='50' name = 'size' placeholder = '{{item.size}}' >
+                                <h5>PRICE</h5>
+                                <input type = 'number' name = 'price' placeholder = '{{item.price}}' >
+                                <h5>POLISH</h5>
+                                <input type = 'text' size='500' name = 'polish' placeholder = '{{item.polish}}' >
+                                <h5>IMAGE</h5>
+                                <input type = 'text' size='200' name = 'image' placeholder = '{{item.image}}' >
+                                <h5>CATAGORY</h5>
+                                <input type="radio" name="catagory" value="CD" checked>CHAFING DISHES<br>
+                                <input type="radio" name="catagory" value="TW">TABLEWARE<br>
+                                <input type="radio" name="catagory" value="HW">HOUSEWARE<br>
+                                <input type="radio" name="catagory" value="CN">COUNTERS<br> 
+                                <input type="radio" name="catagory" value="TB">TROLLEYS AND BINS<br> 
+
+                                <input type='submit' value='Edit'>
+                            </form>
+                            <a href= '{{url_for("index")}}'><button>Cancel</button></a>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+
+                <section>
+                    <div class="row portfolio">
+
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h3>Related products</h3>
+                            </div>
+                        </div>
+
+				{% for i in related %}		
+                         <div class="col-sm-6 col-md-3">
+                            <div class="box-image">
+                                <div class="image">
+                                    <a href="{{url_for('productdetail', productid=i.id)}}"><img src="/static/{{i.image}}" alt="{{i.id}}" class="img-responsive counterim"></a>
+                                </div>
+                                <div class="bg"></div>
+                                <div class="name">
+                                    <a href="{{url_for('productdetail', productid=i.id)}}"><h3>{{i.id}}</h3></a> 
+                                </div>
+                                <div class="text">
+                                    <p class="buttons">
+                                        <a href="{{url_for('productdetail', productid=i.id)}}" class="btn btn-template-transparent-primary">View</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /.box-image -->
+
+                        </div>
+{% endfor %}
+                    </div>
+                </section>
+
+            </div>
+            <!-- /.container -->
+
+
+        </div>
+        <!-- /#content -->
+       <!-- *** FOOTER ***
+_________________________________________________________ -->
+{% include 'footer.html' %} 
+
+</body>
+
+</html>

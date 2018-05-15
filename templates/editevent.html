@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'head.html' %} 
+</head>
+
+<body>
+
+    <div id="all">
+{% include 'nav.html' %}
+
+        <div id="heading-breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>{{item.id}}</h1>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb">
+                            <li><a href="{{url_for('index')}}">Home</a>
+                            </li>
+                            <li>EventEdit
+                            </li>
+                            <li>{{item.id}}</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2>Product Details</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row portfolio-project">
+
+                    <section>
+                            <div class="project-more">
+                            <form action= "{{url_for('eventeditform',eid=item.id)}}"  method = 'POST'>
+                                <input name="id" value="{{item.id}}" style="display:none">
+                                            
+                                <h5>NAME</h5>
+                                <input type = 'text' size='50' name = 'name' placeholder = '{{item.name}}' >
+                                <h5>LOCATION</h5>
+                                <input type = 'text' size='50' name = 'location' placeholder = '{{item.location}}' >
+                                <h5>MONTH</h5>
+                                <select name="month">
+                                <option value="January" selected>Jan</option>
+                                <option value="Feburary">Feb</option>
+                                <option value="March">Mar</option>
+                                <option value="April">Apr</option> 
+                                <option value="May">May</option>
+                                <option value="June">Jun</option>
+                                <option value="July">Jul</option>
+                                <option value="August">Aug</option> 
+                                <option value="September">Sept</option>
+                                <option value="October">Oct</option>
+                                <option value="November">Nov</option>
+                                <option value="December">Dec</option> 
+                                </select>
+                                <h5>YEAR</h5>
+                                <select name="year">
+                                <option value="2018-19" selected>2018-19</option>
+                                <option value="2019-20">2019-20</option>
+                                <option value="2020-21">2020-21</option>
+                                <option value="2021-22">2021-22</option> 
+                                <option value="2022-23">2022-23</option>
+                                </select>
+                                <h5>IMAGE</h5>
+                                <input type = 'text' size='100' name = 'image' placeholder = '/static/{{item.image}}' > <br>
+
+                                <input type='submit' value='Edit'>
+                            </form>
+                            <a href= '{{url_for("index")}}'><button>Cancel</button></a>
+                            </div>
+                    </section>
+
+                </div>
+
+            </div>
+            <!-- /.container -->
+
+
+        </div>
+        <!-- /#content -->
+       <!-- *** FOOTER ***
+_________________________________________________________ -->
+{% include 'footer.html' %} 
+</body>
+
+</html>

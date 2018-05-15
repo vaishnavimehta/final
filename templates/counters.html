@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'head.html' %} 
+</head>
+
+<body>
+    <div id="all">
+{% include 'nav.html' %}
+    
+        <div id="heading-breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>{{typ.name}}</h1>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb">
+                            <li><a href="{{url_for('index')}}">Home</a>
+                            </li>
+                            <li>{{typ.name}}</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <section>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h2>{{typ.name}}</h2>
+                            </div>
+
+                            <p class="lead">Click the image of product to open product page.</p>
+                            {% if log==2 %}
+                            <a href="{{url_for('productcreate', productcat=productcat)}}"><button>Create new product</button></a>
+                            
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row portfolio">
+{% for i in show %}
+                        <div class="col-sm-6 col-md-3">
+                            <div class="box-image">
+                                <div class="image">
+                                    <a href="{{url_for('productdetail', productid=i.id)}}"><img src="/static/{{i.image}}" alt="" class="img-responsive counterim"></a>
+                                </div>
+                                <div class="bg"></div>
+                                <div class="name">
+                                    <a href="{{url_for('productdetail', productid=i.id)}}"><h3>{{i.id}}</h3></a> 
+                                </div>
+                                <div class="text">
+                                    <p class="buttons">
+                                        <a href="{{url_for('productdetail', productid=i.id)}}" class="btn btn-template-transparent-primary">View</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /.box-image -->
+
+                        </div>
+{% endfor %}
+
+                    </div>
+
+                </section>
+
+            </div>
+            <!-- /.container -->
+
+
+        </div>
+        <!-- /#content -->
+
+
+                <!-- *** FOOTER ***
+_________________________________________________________ -->
+{% include 'footer.html' %} 
+
+</body>
+
+</html>

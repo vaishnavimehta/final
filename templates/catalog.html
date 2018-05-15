@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'head.html' %} 
+</head>
+
+<body>
+    <div id="all">
+{% include 'nav.html' %}        
+<section>
+            <!-- *** HOMEPAGE CAROUSEL ***
+ _________________________________________________________ -->
+
+            <div class="home-carousel">
+
+                <div class="dark-mask"></div>
+
+                <div class="container">
+                    <div class="homepage owl-carousel">
+			{% for i in catimg %}
+                        <div class="item">
+                            <div class="row">
+				<center>
+                                    <img class="img-responsive" src="/static/{{i.image}}" alt="" width="400dpx" height="400dpx">
+                                </center>
+                            </div>
+                        </div>
+			{% endfor %}
+                        </div>
+                    <!-- /.project owl-slider -->
+                </div>
+            </div>
+		</section>
+
+        <!-- *** FOOTER ***
+_________________________________________________________ -->
+{% include 'footer.html' %} 
+
+</body>
+
+</html>
